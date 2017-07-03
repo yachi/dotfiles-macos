@@ -1,0 +1,1 @@
+/Users/yachi/.config/fisherman/fry/completions/fry.fish
