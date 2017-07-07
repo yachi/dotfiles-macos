@@ -1,0 +1,1 @@
+/Users/yachi/.config/fisherman/spin/completions/spin.fish
