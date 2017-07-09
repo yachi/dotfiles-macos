@@ -1,0 +1,1 @@
+/Users/yachi/.config/fisherman/bass/functions/bass.fish
