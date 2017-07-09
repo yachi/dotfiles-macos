@@ -177,6 +177,10 @@ function gfc
   git status --short | awk "{print \$2}"
 end
 
+function brup
+  brew update; and brew outdated; and brew upgrade; and brew cleanup
+end
+
 function fish_prompt
   ~/.dotfiles/powerline-shell.py $status --shell bare ^/dev/null
 end
