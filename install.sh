@@ -9,5 +9,18 @@ set -e
 which /usr/local/bin/brew || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew tap caskroom/fonts
-brew install git ruby-install neovim fish htop safe-rm aria2
+brew install git ruby-install neovim fish htop safe-rm aria2 ripgrep
 brew cask install font-hack-nerd-font
+
+# objective see apps:
+
+# blockblock
+# dhs
+# kextviewr
+# knockknock
+# lockdown
+# ostiarius
+# oversight
+# ransomwhere
+# taskexplorer
+# whatsyoursign
