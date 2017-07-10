@@ -716,6 +716,20 @@ def add_jobs_segment(powerline):
 
 
 add_jobs_segment(powerline)
+def add_exit_code_segment(powerline):
+    if powerline.args.prev_error == 0:
+        return
+    fg = Color.CMD_FAILED_FG
+    bg = Color.CMD_FAILED_BG
+    powerline.append(' %s ' % str(powerline.args.prev_error), fg, bg)
+
+
+add_exit_code_segment(powerline)
+def add_newline_segment(powerline):
+    powerline.append("\n", Color.RESET, Color.RESET, separator='')
+
+
+add_newline_segment(powerline)
 def add_root_segment(powerline):
     root_indicators = {
         'bash': ' \\$ ',
