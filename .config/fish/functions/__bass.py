@@ -1,1 +1,0 @@
-/Users/yachi/.config/fisherman/bass/functions/__bass.py

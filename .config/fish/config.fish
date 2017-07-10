@@ -182,7 +182,7 @@ function brup
 end
 
 function fish_prompt
-  ~/.dotfiles/powerline-shell.py $status --shell bare ^/dev/null
+  ~/.dotfiles/powerline-shell.py $status --shell bare # ^/dev/null
 end
 
 alias gwip='git add -A; git ls-files --deleted -z | xargs -r -0 git rm; git commit -m "wip"'
@@ -197,3 +197,7 @@ alias be='bundle exec'
 alias rm='safe-rm'
 
 set fish_user_abbreviations $fish_user_abbreviations 'pie=perl -p -i -e "s###g"'
+
+defaults write .GlobalPreferences com.apple.mouse.scaling -1
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish

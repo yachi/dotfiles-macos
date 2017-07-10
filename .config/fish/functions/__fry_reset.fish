@@ -1,1 +1,0 @@
-/Users/yachi/.config/fisherman/fry/functions/__fry_reset.fish

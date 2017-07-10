@@ -1,1 +1,0 @@
-/Users/yachi/.config/fisherman/fry/functions/fry-installer-ruby-build.fish

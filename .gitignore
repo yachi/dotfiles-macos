@@ -1,3 +1,4 @@
 /.config/fish/fishd.*
+/.config/fish/functions/*
 /.config/fisherman/*
-/.config/configstore
+/.config/configstore/*

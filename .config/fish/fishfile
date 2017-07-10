@@ -2,5 +2,6 @@ edc/bass
 brgmnn/fish-docker-compose
 terlar/fry
 fisherman/getopts
+fisherman/humanize_duration
 fisherman/spin
 fisherman/z
