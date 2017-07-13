@@ -13,6 +13,11 @@ set -g theme_nerd_fonts yes
 fry config auto on > /dev/null
 fry use ruby-2.4.1
 
+# shell color
+if status --is-interactive
+  eval sh $HOME/.config/base16-shell/scripts/base16-eighties.sh
+end
+
 
 # ssh-agent
 eval (ssh-agent -c) > /dev/null ^ /dev/null
