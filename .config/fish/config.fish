@@ -1,7 +1,7 @@
 # set paths
-set PATH ~/.local/bin $PATH
-set PATH /usr/local/bin $PATH
+set PATH /usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin
 set PATH $HOME/Library/Android/sdk/platform-tools $PATH
+set PATH ~/kubernetes/client/bin $PATH
 set -gx GOPATH $HOME/go
 set -gx GOARCH amd64
 set -gx GOOS darwin
