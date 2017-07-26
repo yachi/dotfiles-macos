@@ -15,7 +15,7 @@ fry use ruby-2.4.1
 
 # shell color
 if status --is-interactive
-  eval sh $HOME/.config/base16-shell/scripts/base16-eighties.sh
+  eval sh $HOME/.config/base16-shell/scripts/base16-default-dark.sh
 end
 
 
@@ -34,7 +34,7 @@ function gmd
 end
 
 function gmdd
-  git branch --merged | grep "\b/\b" | xargs -r git branch -d
+  git branch --merged | grep "\b/\b" | xargs git branch -d
 end
 
 function gfpp

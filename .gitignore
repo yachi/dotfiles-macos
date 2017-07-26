@@ -2,3 +2,7 @@
 /.config/fish/functions/*
 /.config/fisherman/*
 /.config/configstore/*
+
+/.config/gcloud/
+/.config/pgcli/
+/.config/hub

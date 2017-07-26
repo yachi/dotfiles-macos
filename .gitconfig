@@ -3,3 +3,7 @@
 	name = Yachi Lo
 [commit]
 	verbose = true
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[alias]
+  patch = !git --no-pager diff --no-color
