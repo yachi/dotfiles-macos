@@ -1,7 +1,6 @@
 # set paths
 set PATH /usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin
 set PATH $HOME/Library/Android/sdk/platform-tools $PATH
-set PATH ~/kubernetes/client/bin $PATH
 set -gx GOPATH $HOME/go
 set -gx GOARCH amd64
 set -gx GOOS darwin
@@ -200,6 +199,8 @@ alias bu='bundle update'
 alias be='bundle exec'
 
 alias rm='safe-rm'
+
+alias ...='cd ../..'
 
 set fish_user_abbreviations $fish_user_abbreviations 'pie=perl -p -i -e "s###g"'
 

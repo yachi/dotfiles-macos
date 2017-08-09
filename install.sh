@@ -5,6 +5,7 @@ set -e
 (cd $HOME && ln -sf .dotfiles/.gemrc)
 (cd $HOME && ln -sf .dotfiles/.config)
 (cd $HOME && ln -sf .dotfiles/.gitconfig)
+(cd $HOME && ln -sf .dotfiles/.navimrc)
 
 which /usr/local/bin/brew || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
