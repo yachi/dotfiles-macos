@@ -1,6 +1,9 @@
 # set paths
-set PATH /usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin
+set PATH /usr/local/sbin $PATH
 set PATH $HOME/Library/Android/sdk/platform-tools $PATH
+set -gx PATH /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin $PATH
+set -gx PATH ~/.local/bin $PATH
+# set -gx PATH /Volumes/android/android/out/host/darwin-x86/bin $PATH
 set -gx GOPATH $HOME/go
 set -gx GOARCH amd64
 set -gx GOOS darwin
@@ -10,7 +13,7 @@ set -gx NVM_DIR $HOME/.nvm
 set -g theme_nerd_fonts yes
 
 fry config auto on > /dev/null
-fry use ruby-2.4.1
+fry use ruby-2.4.2
 
 # shell color
 if status --is-interactive
@@ -140,6 +143,7 @@ set fish_user_abbreviations $fish_user_abbreviations 'lsd=lynx -stdin -dump'
 set fish_user_abbreviations $fish_user_abbreviations 'os=env BUNDLE_GEMFILE=.overcommit_gems.rb bundle exec overcommit --sign'
 set fish_user_abbreviations $fish_user_abbreviations 'od=env OVERCOMMIT_DISABLE=1'
 set fish_user_abbreviations $fish_user_abbreviations 't=trans'
+set fish_user_abbreviations $fish_user_abbreviations 'cc=ccat'
 
 # git wip
 function work_in_progress
@@ -186,7 +190,41 @@ function brup
 end
 
 function fish_prompt
-  ~/.dotfiles/powerline-shell.py $status --shell bare # ^/dev/null
+  powerline-shell --shell bare $status
+end
+
+function mkcdir
+  set dir $argv[1]
+  mkdir -p $dir ; and cd $dir
+end
+
+function rails
+  if test -f bin/rails
+    bin/rails $argv
+  else
+    rails $argv
+  end
+end
+
+function xmr2hkd
+  curl -s --compress "https://currencio.co/xmr/hkd/$argv/" | pup '.result-text text{}'
+end
+
+function coin2hkd
+  curl -s --compress "https://currencio.co/$argv[1]/hkd/$argv[2]/" | pup '.result-text text{}'
+end
+
+function coin2usd
+  curl -s --compress "https://currencio.co/$argv[1]/usd/$argv[2]/" | pup '.result-text text{}'
+end
+
+function etn2usd
+  set usd (curl -s --compress https://graphs.coinmarketcap.com/currencies/electroneum/ | jq '.price_usd | last | last')
+  math -s2 "$usd *$argv"
+end
+
+function whattomine
+  curl -s 'whattomine.com/coins.json' | jsonpp | less
 end
 
 alias gwip='git add -A; git ls-files --deleted -z | xargs -r -0 git rm; git commit -m "wip"'

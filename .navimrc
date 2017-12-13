@@ -8,6 +8,7 @@ function! BeforeAll()
 
   " layers
   let g:navim_settings.layers = [
+      \ 'game',
       \ 'c',
       \ 'completion',
       \ 'core',
@@ -21,12 +22,13 @@ function! BeforeAll()
       \ 'ruby',
       \ 'python',
       \ 'scm',
+      \ 'web',
       \ 'unite']
   "'ruby', 'scala', 'textobj', 'web'
 
   " additional plugins
   let g:navim_settings.additional_plugins = [
-      \ 'tacahiroy/ctrlp-funky' ]
+    \ 'ajmwagar/vim-deus' ]
   "'joshdick/onedark.vim', 'yonchu/accelerated-smooth-scroll', 'edkolev/tmuxline.vim'
 
   " disabled plugins
@@ -51,7 +53,7 @@ function! BeforeAll()
 
   " user interface
   "let g:navim_settings.colorscheme = 'solarized'
-  let g:navim_settings.colorscheme = 'molokai'
+  let g:navim_settings.colorscheme = 'deus'
   "let g:navim_settings.colorscheme = 'jellybeans'
   "let g:navim_settings.colorscheme = 'onedark'
   let g:navim_settings.force256 = 0
@@ -59,6 +61,8 @@ function! BeforeAll()
   let g:navim_settings.max_column = 80
   let g:navim_settings.powerline_fonts = 1
   let g:navim_settings.nerd_fonts = 1
+
+  let g:airline_theme='deus'
 
   let g:loaded_syntastic_ruby_rubocop_checker = 1
 
@@ -81,6 +85,8 @@ function! AfterAll()
   "set noexpandtab
 
   set mouse-=a
+
+  set background=dark
 
 endfunction
 
