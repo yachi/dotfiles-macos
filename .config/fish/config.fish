@@ -10,6 +10,9 @@ set -gx GOOS darwin
 set -gx PATH $GOPATH/bin $PATH
 set -gx NVM_DIR $HOME/.nvm
 
+set -gx LANG en_US.UTF-8
+set -gx GPG_TTY (tty)
+
 set -g theme_nerd_fonts yes
 
 fry config auto on > /dev/null
