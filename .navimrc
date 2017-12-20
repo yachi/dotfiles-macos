@@ -28,6 +28,7 @@ function! BeforeAll()
 
   " additional plugins
   let g:navim_settings.additional_plugins = [
+    \ 'dag/vim-fish',
     \ 'ajmwagar/vim-deus' ]
   "'joshdick/onedark.vim', 'yonchu/accelerated-smooth-scroll', 'edkolev/tmuxline.vim'
 
