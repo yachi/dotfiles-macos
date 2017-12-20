@@ -193,7 +193,8 @@ function brup
 end
 
 function fish_prompt
-  powerline-shell --shell bare $status
+  # go get -u github.com/justjanne/powerline-go
+  ~/go/bin/powerline-go -error $status -shell bare
 end
 
 function mkcdir
