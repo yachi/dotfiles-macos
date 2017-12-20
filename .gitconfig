@@ -1,8 +1,10 @@
 [user]
 	email = yaachi@gmail.com
 	name = Yachi Lo
+	signingkey = 3E8B98920CCA2166
 [commit]
 	verbose = true
+	gpgsign = true
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [alias]
