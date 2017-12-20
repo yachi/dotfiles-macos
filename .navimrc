@@ -72,6 +72,8 @@ function! BeforeAll()
   let g:ale_fixers.ruby = [
       \ 'remove_trailing_lines',
       \ 'rubocop']
+  let g:ale_fixers.javascript = [
+      \ 'standard' ]
   let g:ale_ruby_rubocop_options = '--rails --display-style-guide'
   let g:ale_fix_on_save = 1
 
