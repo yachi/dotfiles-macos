@@ -192,8 +192,11 @@ function brup
   brew update; and brew outdated; and brew upgrade; and brew cleanup
 end
 
+function update_powerlinego
+  go get -u github.com/justjanne/powerline-go
+end
+
 function fish_prompt
-  # go get -u github.com/justjanne/powerline-go
   ~/go/bin/powerline-go -error $status -shell bare
 end
 
