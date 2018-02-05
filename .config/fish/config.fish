@@ -213,6 +213,22 @@ function rails
   end
 end
 
+function rspec
+  if test -f bin/rspec
+    bin/rspec $argv
+  else
+    rspec $argv
+  end
+end
+
+function pryc
+  pry -r ./config/environment
+end
+
+function ml
+  fish -c 'sleep 5; m lock' & ;sleep 10; cd $HOME/github/xmr-stak; eval $HOME/github/xmr-stak/bin/xmr-stak
+end
+
 function xmr2hkd
   curl -s --compress "https://currencio.co/xmr/hkd/$argv/" | pup '.result-text text{}'
 end
@@ -230,10 +246,15 @@ function etn2usd
   math -s2 "$usd *$argv"
 end
 
+function sgd2fiat
+  curl -s "https://finance.google.com/finance/converter?a=$argv[2]&from=SGD&to=$argv[1]" | pup '.bld text{}' | grep -Eo '\d+\.\d+'
+end
+
 function whattomine
   curl -s 'whattomine.com/coins.json' | jsonpp | less
 end
 
+alias fzg='find /Volumes/GoogleDrive | fzy'
 alias gwip='git add -A; git ls-files --deleted -z | xargs -r -0 git rm; git commit -m "wip"'
 alias gunwip='git log -n 1 | grep -q -c wip; and git reset HEAD~1'
 alias gdq='git checkout develop; and git branch -D qa'

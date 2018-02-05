@@ -28,7 +28,11 @@ function! BeforeAll()
 
   " additional plugins
   let g:navim_settings.additional_plugins = [
+    \ 'thoughtbot/vim-rspec',
     \ 'dag/vim-fish',
+    \ 'tpope/vim-abolish',
+    \ 'tpope/vim-dispatch',
+    \ 'cloudhead/neovim-fuzzy',
     \ 'ajmwagar/vim-deus' ]
   "'joshdick/onedark.vim', 'yonchu/accelerated-smooth-scroll', 'edkolev/tmuxline.vim'
 
@@ -45,8 +49,8 @@ function! BeforeAll()
   "let g:navim_settings.cscopeprg = 'cscope'
 
   " plugins
-  let g:navim_settings.completion_autoselect = 1
-  "let g:navim_settings.completion_plugin = 'ycm'
+  let g:navim_settings.completion_autoselect = 0
+  let g:navim_settings.completion_plugin = 'ycm'
   let g:navim_settings.explorer_plugin = 'nerdtree'
   "let g:navim_settings.explorer_plugin = 'vimfiler'
   let g:navim_settings.statusline_plugin = 'airline'
@@ -90,6 +94,10 @@ function! AfterAll()
   set mouse-=a
 
   set background=dark
+
+  nnoremap \ :FuzzyOpen<CR>
+
+  autocmd FileType ruby nmap <LocalLeader>r :call RunCurrentSpecFile()<CR>
 
 endfunction
 
