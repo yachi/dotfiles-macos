@@ -16,7 +16,7 @@ set -gx GPG_TTY (tty)
 set -g theme_nerd_fonts yes
 
 fry config auto on > /dev/null
-fry use ruby-2.4.2
+fry use ruby-2.5.1
 
 # shell color
 if status --is-interactive
@@ -84,6 +84,18 @@ function gmqa
   git branch -D qa
   git checkout qa
   git merge $branch; and git push; and fish -c 'bundle check; or bundle install'
+end
+
+function gccl
+  git commit -va -m '📝  add changelog item'
+end
+
+function gmb
+  git merge-base -a $argv[1] HEAD
+end
+
+function gdmb
+  git diff (git merge-base -a $argv[1] HEAD)
 end
 
 function adbpush
@@ -241,6 +253,13 @@ function coin2usd
   curl -s --compress "https://currencio.co/$argv[1]/usd/$argv[2]/" | pup '.result-text text{}'
 end
 
+function coins
+  coin2usd btc 1 &
+  coin2usd eth 1 &
+  coin2usd xmr 1 &
+  coin2usd mco 1 &
+end
+
 function etn2usd
   set usd (curl -s --compress https://graphs.coinmarketcap.com/currencies/electroneum/ | jq '.price_usd | last | last')
   math -s2 "$usd *$argv"
@@ -250,14 +269,26 @@ function sgd2fiat
   curl -s "https://finance.google.com/finance/converter?a=$argv[2]&from=SGD&to=$argv[1]" | pup '.bld text{}' | grep -Eo '\d+\.\d+'
 end
 
+function usd2fiat
+  curl -s "https://finance.google.com/finance/converter?a=$argv[2]&from=usd&to=$argv[1]" | pup '.bld text{}' | grep -Eo '\d+\.\d+'
+end
+
 function whattomine
   curl -s 'whattomine.com/coins.json' | jsonpp | less
+end
+
+function update_go_cli
+  for a in {cjbassi/gotop,justjanne/powerline-go}
+    echo "updating $a ..."
+    go get -u "github.com/$a"
+  end
 end
 
 alias fzg='find /Volumes/GoogleDrive | fzy'
 alias gwip='git add -A; git ls-files --deleted -z | xargs -r -0 git rm; git commit -m "wip"'
 alias gunwip='git log -n 1 | grep -q -c wip; and git reset HEAD~1'
 alias gdq='git checkout develop; and git branch -D qa'
+alias gts='git tag -l --sort=v:refname | tail -n20'
 
 alias bi='bundle check; or bundle install'
 alias bii='bundle install'
@@ -267,6 +298,7 @@ alias be='bundle exec'
 alias rm='safe-rm'
 
 alias ...='cd ../..'
+alias ....='cd ../../..'
 
 set fish_user_abbreviations $fish_user_abbreviations 'pie=perl -p -i -e "s###g"'
 

@@ -4,6 +4,8 @@
 " settings before all
 function! BeforeAll()
 
+  set termguicolors
+
   let g:navim_settings = {}
 
   " layers
@@ -33,8 +35,16 @@ function! BeforeAll()
     \ 'tpope/vim-abolish',
     \ 'tpope/vim-dispatch',
     \ 'cloudhead/neovim-fuzzy',
+    \ 'takac/vim-hardtime',
+    \ 'rhysd/clever-f.vim',
+    \ 'kristijanhusak/vim-carbon-now-sh',
+    \ 'slim-template/vim-slim',
+    \ 'sheerun/vim-polyglot',
+    \ 'jiangmiao/auto-pairs',
     \ 'ajmwagar/vim-deus' ]
   "'joshdick/onedark.vim', 'yonchu/accelerated-smooth-scroll', 'edkolev/tmuxline.vim'
+    " \ 'ctrlpvim/ctrlp.vim',
+    " \ 'tacahiroy/ctrlp-funky',
 
   " disabled plugins
   let g:navim_settings.disabled_plugins = []
@@ -49,8 +59,8 @@ function! BeforeAll()
   "let g:navim_settings.cscopeprg = 'cscope'
 
   " plugins
-  let g:navim_settings.completion_autoselect = 0
-  let g:navim_settings.completion_plugin = 'ycm'
+  " let g:navim_settings.completion_autoselect = 0
+  " let g:navim_settings.completion_plugin = 'ycm'
   let g:navim_settings.explorer_plugin = 'nerdtree'
   "let g:navim_settings.explorer_plugin = 'vimfiler'
   let g:navim_settings.statusline_plugin = 'airline'
@@ -98,6 +108,8 @@ function! AfterAll()
   nnoremap \ :FuzzyOpen<CR>
 
   autocmd FileType ruby nmap <LocalLeader>r :call RunCurrentSpecFile()<CR>
+
+  let g:hardtime_default_on = 1
 
 endfunction
 
