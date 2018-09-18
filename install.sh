@@ -14,16 +14,16 @@ brew install git ruby-install neovim fish htop safe-rm aria2 ripgrep tig docker-
 pip3 install --upgrade pip
 pip3 install neovim
 
+brew install caskroom/versions/docker-edge caskroom/versions/slack-beta
+
 brew tap caskroom/fonts
-brew cask install font-hack-nerd-font
+brew cask install keybase \
+                  google-cloud-sdk \
+                  alfred \
+                  istat-menus \
+                  font-hack-nerd-font \
+                  android-studio
 
-brew install caskroom/versions/docker-edge
-
-brew cask install keybase
-brew cask install google-cloud-sdk
-brew cask install alfred
-brew cask install istat-menus
-brew cask install android-studio
 
 go get -u github.com/justjanne/powerline-go
 
