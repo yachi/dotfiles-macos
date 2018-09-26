@@ -1,6 +1,7 @@
 # set paths
 set PATH /usr/local/sbin $PATH
 set PATH $HOME/Library/Android/sdk/platform-tools $PATH
+set PATH $HOME/Library/Android/sdk/tools/bin $PATH
 set -gx PATH /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin $PATH
 set -gx PATH ~/.local/bin $PATH
 # set -gx PATH /Volumes/android/android/out/host/darwin-x86/bin $PATH
@@ -17,6 +18,8 @@ set -g theme_nerd_fonts yes
 
 fry config auto on > /dev/null
 fry use ruby-2.5.1
+nvm use default
+pyenv version
 
 # shell color
 if status --is-interactive
@@ -87,6 +90,7 @@ function gmqa
 end
 
 function gccl
+  git add changelog/unreleased/
   git commit -va -m '📝  add changelog item'
 end
 
@@ -127,6 +131,7 @@ set -gx TERM screen-256color
 set -U fish_user_abbreviations 'v=nvim -o'
 set fish_user_abbreviations $fish_user_abbreviations 'g=git'
 set fish_user_abbreviations $fish_user_abbreviations 'gdf=git dsf'
+set fish_user_abbreviations $fish_user_abbreviations 'ga=git add'
 set fish_user_abbreviations $fish_user_abbreviations 'gst=git status'
 set fish_user_abbreviations $fish_user_abbreviations 'gd=git diff'
 set fish_user_abbreviations $fish_user_abbreviations 'gdc=git diff --cached'
@@ -175,6 +180,11 @@ function drwr
   docker-compose run --rm web bin/spring rspec (git status --short | awk "{print \$2}" | grep -E "^spec/.*_spec.rb")
 end
 
+function rslf
+  git ls-files | grep -E "^spec/.*$argv[1].*_spec\.rb\$"
+  bin/rspec (git ls-files | grep -E "^spec/.*$argv[1].*_spec\.rb\$")
+end
+
 function drwdb
   docker-compose stop db
   docker-compose rm -f db
@@ -201,7 +211,11 @@ function gfc
 end
 
 function brup
-  brew update; and brew outdated; and brew upgrade; and brew cleanup
+  brew update
+  and brew outdated
+  and brew upgrade
+  and brew cask upgrade
+  and brew cleanup
 end
 
 function update_powerlinego
@@ -285,7 +299,7 @@ function update_go_cli
 end
 
 alias fzg='find /Volumes/GoogleDrive | fzy'
-alias gwip='git add -A; git ls-files --deleted -z | xargs -r -0 git rm; git commit -m "wip"'
+alias gwip='git add -A; git ls-files --deleted -z | xargs -0 git rm; git commit -m "wip"'
 alias gunwip='git log -n 1 | grep -q -c wip; and git reset HEAD~1'
 alias gdq='git checkout develop; and git branch -D qa'
 alias gts='git tag -l --sort=v:refname | tail -n20'
