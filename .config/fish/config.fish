@@ -128,42 +128,42 @@ set -x MAKEFLAGS -j8
 set -gx TERM screen-256color
 
 # abbreviations
-set -U fish_user_abbreviations 'v=nvim -o'
-set fish_user_abbreviations $fish_user_abbreviations 'g=git'
-set fish_user_abbreviations $fish_user_abbreviations 'gdf=git dsf'
-set fish_user_abbreviations $fish_user_abbreviations 'ga=git add'
-set fish_user_abbreviations $fish_user_abbreviations 'gst=git status'
-set fish_user_abbreviations $fish_user_abbreviations 'gd=git diff'
-set fish_user_abbreviations $fish_user_abbreviations 'gdc=git diff --cached'
-set fish_user_abbreviations $fish_user_abbreviations 'gp=git push'
-set fish_user_abbreviations $fish_user_abbreviations 'gm=git merge --no-ff'
-set fish_user_abbreviations $fish_user_abbreviations 'gc=git commit -v'
-set fish_user_abbreviations $fish_user_abbreviations 'gca=git commit -av'
-set fish_user_abbreviations $fish_user_abbreviations 'gco=git checkout'
-set fish_user_abbreviations $fish_user_abbreviations 'gup=git pull --rebase'
-set fish_user_abbreviations $fish_user_abbreviations 'gfg=git ls-files|grep'
-set fish_user_abbreviations $fish_user_abbreviations 'gsup=git submodule update --init'
-set fish_user_abbreviations $fish_user_abbreviations 'gf=git flow'
-set fish_user_abbreviations $fish_user_abbreviations 'gffs=git flow feature start'
-set fish_user_abbreviations $fish_user_abbreviations 'gffp=git flow feature publish'
-set fish_user_abbreviations $fish_user_abbreviations 'gffr=env OVERCOMMIT_DISABLE=1 git flow feature rebase'
-set fish_user_abbreviations $fish_user_abbreviations 'sc=systemctl'
-set fish_user_abbreviations $fish_user_abbreviations 'ssc=sudo systemctl'
-set fish_user_abbreviations $fish_user_abbreviations 'rrg=rake routes | grep'
-set fish_user_abbreviations $fish_user_abbreviations 'dc=docker-compose'
-set fish_user_abbreviations $fish_user_abbreviations 'dcl=docker-compose logs'
-set fish_user_abbreviations $fish_user_abbreviations 'drw=docker-compose run --rm web'
-set fish_user_abbreviations $fish_user_abbreviations 'drws=docker-compose run --rm web bin/spring'
-set fish_user_abbreviations $fish_user_abbreviations 'dew=docker-compose exec web'
-set fish_user_abbreviations $fish_user_abbreviations 'dewb=docker-compose exec web bundle'
-set fish_user_abbreviations $fish_user_abbreviations 'dews=docker-compose exec web bin/spring'
-set fish_user_abbreviations $fish_user_abbreviations "dap=sed -i '/ ap /d' (git status --short|awk '{print \$2}')"
-set fish_user_abbreviations $fish_user_abbreviations 'le=less -R'
-set fish_user_abbreviations $fish_user_abbreviations 'lsd=lynx -stdin -dump'
-set fish_user_abbreviations $fish_user_abbreviations 'os=env BUNDLE_GEMFILE=.overcommit_gems.rb bundle exec overcommit --sign'
-set fish_user_abbreviations $fish_user_abbreviations 'od=env OVERCOMMIT_DISABLE=1'
-set fish_user_abbreviations $fish_user_abbreviations 't=trans'
-set fish_user_abbreviations $fish_user_abbreviations 'cc=ccat'
+abbr -a -g v nvim -o
+abbr -a -g g git
+abbr -a -g gdf git dsf
+abbr -a -g ga git add
+abbr -a -g gst git status
+abbr -a -g gd git diff
+abbr -a -g gdc git diff --cached
+abbr -a -g gp git push
+abbr -a -g gm git merge --no-ff
+abbr -a -g gc git commit -v
+abbr -a -g gca git commit -av
+abbr -a -g gco git checkout
+abbr -a -g gup git pull --rebase
+abbr -a -g gfg 'git ls-files|grep'
+abbr -a -g gsup git submodule update --init
+abbr -a -g gf git flow
+abbr -a -g gffs git flow feature start
+abbr -a -g gffp git flow feature publish
+abbr -a -g gffr env OVERCOMMIT_DISABLE=1 git flow feature rebase
+abbr -a -g sc systemctl
+abbr -a -g ssc sudo systemctl
+abbr -a -g rrg 'rake routes | grep'
+abbr -a -g dc docker-compose
+abbr -a -g dcl docker-compose logs
+abbr -a -g drw docker-compose run --rm web
+abbr -a -g drws docker-compose run --rm web bin/spring
+abbr -a -g dew docker-compose exec web
+abbr -a -g dewb docker-compose exec web bundle
+abbr -a -g dews docker-compose exec web bin/spring
+# abbr -a -g dap sed -i / ap /d (git status --short|awk {print \$2})
+abbr -a -g le less -R
+abbr -a -g lsd lynx -stdin -dump
+abbr -a -g os env BUNDLE_GEMFILE=.overcommit_gems.rb bundle exec overcommit --sign
+abbr -a -g od env OVERCOMMIT_DISABLE=1
+abbr -a -g t trans
+abbr -a -g cc ccat
 
 # git wip
 function work_in_progress
@@ -314,7 +314,7 @@ alias rm='safe-rm'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-set fish_user_abbreviations $fish_user_abbreviations 'pie=perl -p -i -e "s###g"'
+abbr -a -g pieperl -p -i -e "s###g"
 
 defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
