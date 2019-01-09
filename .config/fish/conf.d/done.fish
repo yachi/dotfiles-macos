@@ -1,1 +1,0 @@
-/Users/yachi/.config/fisherman/done/conf.d/done.fish

@@ -1,8 +1,10 @@
+/.config/fish/fish_variables
+/.config/fish/fishfile
 /.config/fish/fishd.*
 /.config/fish/functions/*
 /.config/fish/completions/*
 /.config/fish/conf.d
-/.config/fisherman/*
+/.config/fisher/*
 /.config/configstore/*
 
 /.config/gcloud/
