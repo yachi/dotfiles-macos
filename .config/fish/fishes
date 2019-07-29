@@ -13,3 +13,5 @@ jorgebucaran/FISH-humanize_duration
 oh-my-fish/plugin-errno
 terlar/fry
 tuvistavie/fish-ssh-agent
+jethrokuan/fish-direnv
+yachi/nix

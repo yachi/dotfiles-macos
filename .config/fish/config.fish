@@ -1,7 +1,7 @@
 # set paths
 set PATH /usr/local/sbin $PATH
-set PATH $HOME/Library/Android/sdk/platform-tools $PATH
-set PATH $HOME/Library/Android/sdk/tools/bin $PATH
+# set PATH $HOME/Library/Android/sdk/platform-tools $PATH
+# set PATH $HOME/Library/Android/sdk/tools/bin $PATH
 set -gx PATH /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin $PATH
 set -gx PATH ~/.local/bin $PATH
 # set -gx PATH /Volumes/android/android/out/host/darwin-x86/bin $PATH
@@ -14,17 +14,16 @@ set -gx NVM_DIR $HOME/.nvm
 set -gx LANG en_US.UTF-8
 set -gx GPG_TTY (tty)
 
+set -gx SSL_CERT_FILE /etc/ssl/cert.pem
+set -gx CPPFLAGS -I/usr/local/opt/openssl/include
+set -gx LDFLAGS -L/usr/local/opt/openssl/lib
+
 set -g theme_nerd_fonts yes
 
 fry config auto on > /dev/null
-fry use ruby-2.5.1
+cd (pwd)
 nvm use default
 pyenv version
-
-# shell color
-if status --is-interactive
-  eval sh $HOME/.config/base16-shell/scripts/base16-default-dark.sh
-end
 
 
 # ssh-agent
@@ -43,6 +42,24 @@ end
 
 function gmdd
   git branch --merged | grep "\b/\b" | xargs git branch -d
+end
+
+function gcost
+  git branch -D stmona
+  git fetch
+  git checkout stmona
+end
+
+function gcob
+  git checkout (git for-each-ref --sort=committerdate refs/heads --format='%(refname:short)' | tail -r | fzf --height=30% --reverse)
+end
+
+function gmbb
+  set a (git rev-parse --abbrev-ref HEAD)
+  git fetch
+  git branch -D stmona
+  git checkout stmona
+  git merge $a
 end
 
 function gfpp
@@ -181,8 +198,8 @@ function drwr
 end
 
 function rslf
-  git ls-files | grep -E "^spec/.*$argv[1].*_spec\.rb\$"
-  bin/rspec (git ls-files | grep -E "^spec/.*$argv[1].*_spec\.rb\$")
+  git ls-files | grep -E "^spec/.*($argv[1]).*_spec\.rb\$"
+  env RAILS_ENV=test bin/rspec (git ls-files | grep -E "^spec/.*($argv[1]).*_spec\.rb\$")
 end
 
 function drwdb
@@ -229,6 +246,11 @@ end
 function mkcdir
   set dir $argv[1]
   mkdir -p $dir ; and cd $dir
+end
+
+function mktouch
+  mkdir -p (dirname $argv[1])
+  touch $argv[1]
 end
 
 function rails
@@ -291,6 +313,10 @@ function whattomine
   curl -s 'whattomine.com/coins.json' | jsonpp | less
 end
 
+function wttr
+  curl -s wttr.in
+end
+
 function update_go_cli
   for a in {cjbassi/gotop,justjanne/powerline-go}
     echo "updating $a ..."
@@ -298,6 +324,9 @@ function update_go_cli
   end
 end
 
+function icat
+  kitty +kitten icat "$argv"
+end
 alias fzg='find /Volumes/GoogleDrive | fzy'
 alias gwip='git add -A; git ls-files --deleted -z | xargs -0 git rm; git commit -m "wip"'
 alias gunwip='git log -n 1 | grep -q -c wip; and git reset HEAD~1'
@@ -314,7 +343,7 @@ alias rm='safe-rm'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-abbr -a -g pieperl -p -i -e "s###g"
+abbr -a -g pie perl -p -i -e "s###g"
 
 defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
