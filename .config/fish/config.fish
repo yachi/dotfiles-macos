@@ -51,7 +51,7 @@ function gcost
 end
 
 function gcob
-  git checkout (git for-each-ref --sort=committerdate refs/heads --format='%(refname:short)' | tail -r | fzf --height=30% --reverse)
+  git checkout (git for-each-ref --sort=committerdate refs/heads --format='%(refname:short)' | tail -r | fzf --height=30% --reverse --no-mouse)
 end
 
 function gmbb
