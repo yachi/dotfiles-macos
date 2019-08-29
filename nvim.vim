@@ -52,6 +52,7 @@ let test#strategy = 'basic'
 
 nnoremap <Leader> :GFiles<CR>
 nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>/ :Rg<Space>
 command! Q :q
 
 " ale linting
