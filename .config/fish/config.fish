@@ -9,7 +9,6 @@ set -gx GOPATH $HOME/go
 set -gx GOARCH amd64
 set -gx GOOS darwin
 set -gx PATH $GOPATH/bin $PATH
-set -gx NVM_DIR $HOME/.nvm
 
 set -gx LANG en_US.UTF-8
 set -gx GPG_TTY (tty)
@@ -20,14 +19,11 @@ set -gx LDFLAGS -L/usr/local/opt/openssl/lib
 
 set -g theme_nerd_fonts yes
 
-fry config auto on > /dev/null
-cd (pwd)
-nvm use default
 pyenv version
 
 
 # ssh-agent
-eval (ssh-agent -c) > /dev/null ^ /dev/null
+# eval (ssh-agent -c) > /dev/null ^ /dev/null
 ssh-add ~/.ssh/id_rsa > /dev/null ^ /dev/null
 ssh-add ~/.ssh/id_ecdsa.pub > /dev/null ^ /dev/null
 
@@ -41,7 +37,7 @@ function gmd
 end
 
 function gmdd
-  git branch --merged | grep "\b/\b" | xargs git branch -d
+  git branch --merged | grep -v develop | grep -v master | xargs git branch -d
 end
 
 function gcost
@@ -164,6 +160,7 @@ abbr -a -g gp git push
 abbr -a -g gm git merge --no-ff
 abbr -a -g gc git commit -v
 abbr -a -g gca git commit -av
+abbr -a -g gcaa git commit -av --amend
 abbr -a -g gco git checkout
 abbr -a -g gup git pull --rebase
 abbr -a -g gfg 'git ls-files|grep'
@@ -249,6 +246,7 @@ end
 
 function fish_prompt
   ~/go/bin/powerline-go -error $status -shell bare
+  # eval (starship init fish)
 end
 
 function mkcdir
@@ -356,3 +354,5 @@ abbr -a -g pie perl -p -i -e "s###g"
 defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
+source /usr/local/Cellar/asdf/*/asdf.fish
